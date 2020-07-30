@@ -6,7 +6,7 @@ metadata:
   namespace: nexclipper
 ---
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: endpoint-reader
   namespace: nexclipper
@@ -16,7 +16,7 @@ rules:
   verbs: ["get"]
 ---
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: endpoint-reader
   namespace: nexclipper
@@ -86,7 +86,7 @@ data:
       loopback_users.guest = false
    
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: rabbitmq
@@ -94,6 +94,9 @@ metadata:
 spec:
   serviceName: rabbitmq
   replicas: 3
+  selector:
+    matchLabels:
+      app: rabbitmq
   template:
     metadata:
       labels:

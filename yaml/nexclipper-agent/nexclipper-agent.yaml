@@ -5,7 +5,7 @@ metadata:
   namespace: nexclipperagent
 ---
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: agent-sa-kube-system-cluster-admin
 subjects:
@@ -17,7 +17,7 @@ roleRef:
   kind: ClusterRole
   name: cluster-admin
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: nexclipper-agent
@@ -74,6 +74,8 @@ spec:
         env:
         - name: cluster_id
           value: "1"
+        - name: agent_endpoint
+          value: 192.168.56.6:30752
         volumeMounts:
         - mountPath: /var/run/docker.sock
           name: docker-sock
@@ -90,7 +92,7 @@ spec:
 
 ---
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nexclipper-agent-k8s
@@ -141,6 +143,8 @@ spec:
         env:
         - name: cluster_id
           value: "1"
+        - name: agent_endpoint
+          value: 192.168.56.6:30752
         volumeMounts:
         - mountPath: /dev
           name: dev

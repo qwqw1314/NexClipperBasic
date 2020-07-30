@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: influx
@@ -31,5 +31,5 @@ spec:
       volumes:
       - name: influx-data
         hostPath:
-          path: /nfs/inlfuxdb
+          path: /nfs/influxdb
 status: {}
