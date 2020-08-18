@@ -5,7 +5,7 @@ metadata:
   namespace: nexclipperagent
 ---
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: agent-sa-kube-system-cluster-admin
 subjects:
@@ -17,7 +17,7 @@ roleRef:
   kind: ClusterRole
   name: cluster-admin
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: nexclipper-agent
@@ -90,7 +90,7 @@ spec:
 
 ---
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nexclipper-agent-k8s

@@ -75,7 +75,7 @@ spec:
         - name: cluster_id
           value: "1"
         - name: agent_endpoint
-          value: 192.168.56.6:30752
+          value: 10.2.13.147:30003
         volumeMounts:
         - mountPath: /var/run/docker.sock
           name: docker-sock
@@ -144,7 +144,7 @@ spec:
         - name: cluster_id
           value: "1"
         - name: agent_endpoint
-          value: 192.168.56.6:30752
+          value: 10.2.13.147:30003
         volumeMounts:
         - mountPath: /dev
           name: dev
